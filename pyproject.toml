@@ -1,0 +1,19 @@
+[project]
+dynamic = ["version"]
+
+[tool.bumpver]
+current_version = "1.0.0"
+version_pattern = "MAJOR.MINOR.PATCH"
+# below fields are optional, default value is false
+commit_message = "update version: v{old_version} -> v{new_version}"
+commit = true  # creates a new commit for the version update with the
+               # above defined message
+push = true  # pushes the commit automatically to github
+
+[tool.setuptools.dynamic]
+version = {attr = "__version__"}
+
+[tool.bumpver.file_patterns]
+"__init__.py" = [
+    '^__version__ = "{version}"$',
+]
